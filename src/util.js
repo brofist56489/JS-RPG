@@ -42,7 +42,7 @@ var GameTimer = (function() {
 			this.frames++;
 			if(this.now - this.ltr >= 1000.0) {
 				this.ltr += 1000.0;
-				console.log(this.ticks + " tps, " + this.frames + " fps");
+				print(this.ticks + " tps, " + this.frames + " fps");
 				this.ticks = 0;
 				this.frames = 0;
 			}
@@ -56,3 +56,37 @@ var GameTimer = (function() {
 
 	return GameTimer;
 })();
+
+var Rect = (function() {
+    
+    function Rect(x, y, w, h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+    }
+    
+    Rect.prototype = {
+        x : 0,
+        y : 0,
+        w : 0,
+        h : 0,
+        
+        intersects: function(rect) {
+            if (   this.x + this.w >= rect.x
+                && this.x <= rect.x + rect.w
+                && this.y + this.h >= rect.y
+                && this.y <= rect.y + rect.h) {
+                return true;
+            } else {
+                return false;
+            }
+        },
+    };
+    
+    return Rect;
+})();
+
+function print(o) {
+    console.log(o);
+}

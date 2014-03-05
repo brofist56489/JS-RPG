@@ -15,7 +15,7 @@ function initGraphics() {
 }
 
 function update() {
-
+    world.update();
 }
 
 function render() {
